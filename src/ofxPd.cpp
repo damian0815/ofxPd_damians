@@ -20,9 +20,12 @@ extern "C"
 extern void sched_audio_callbackfn(void);
 };
 
-void ofxPd::setup( string _lib_dir )
+void ofxPd::setup( string _lib_dir, int _out_chans, int _bitrate, int _block_size )
 {
 	lib_dir = ofToDataPath(_lib_dir);
+	out_chans = _out_chans;
+	bitrate = _bitrate;
+	block_size = _block_size;
 }
 
 void ofxPd::addOpenFile( string file_path )
@@ -75,29 +78,24 @@ void ofxPd::threadedFunction()
 		search_path_cat += search_path[i];
 	}
 	
-	int sound_rate = 44100;
-	int block_size = 64;
-	int n_out_channels = 2;
+	int sound_rate = bitrate;
+	int n_out_channels = out_chans;
 	int n_in_channels = 0;
 	sys_main( lib_dir.c_str(), externs_cat.c_str(), open_files_cat.c_str(), search_path_cat.c_str(),
 			 sound_rate, block_size, n_out_channels, n_in_channels );
 
 }
 
-void ofxPd::audioRequested( float* output, int bufferSize, int nChannels )
+void ofxPd::renderAudio( float* output, int bufferSize, int nChannels )
 {
-    //assert(inBusNumber == 0);
-    //assert(ioData->mNumberBuffers == 1);  // doing one callback, right?
-    //assert(sizeof(t_sample) == 4);  // assume 32-bit floats here
+	// adapted from AudioOutputController by bryan summerset
 	
-    //AudioCallbackParams *params = (AudioCallbackParams*)inRefCon;
-    
     // sys_schedblocksize is How many frames we have per PD dsp_tick
-    // inNumberFrames is how many CoreAudio wants
+    // inNumberFrames is how many frames have been requested
 	int inNumberFrames = bufferSize;
     
     // Make sure we're dealing with evenly divisible numbers between
-    // the number of frames CoreAudio needs vs the block size for a given PD dsp tick.
+    // the number of frames requested vs the block size for a given PD dsp tick.
     //Otherwise this looping scheme we're doing below doesn't make much sense.
     assert(inNumberFrames % sys_schedblocksize == 0);
 	
@@ -106,9 +104,8 @@ void ofxPd::audioRequested( float* output, int bufferSize, int nChannels )
 
     for(int i = 0; i < times; i++) {
         
-		// do one DSP block
+		// do one Pd DSP block
         sys_lock();
-        //(*params->callback)(inTimeStamp);
 		sched_audio_callbackfn();
         sys_unlock();
 		
