@@ -1,0 +1,131 @@
+<install>
+    <name>ofxPd</name>
+	<version>0.02</version>
+	<author>damian stewart, zach liebermann, bryan summerset, m r peach, miller puckette et. al.</author>
+	<url>http://github.com/damiannz/ofxPd</url>
+
+	<requires>ofxOsc</requires>
+	<requires>ofxThread</requires>
+
+	<add>
+
+		<!-- 	=====================================================================	-->
+		<!--	========================== add per project using this addon =========	-->
+		<!-- 	=====================================================================	-->
+
+		<src>
+			<folder name="addons/ofxPd/src">						
+				<file>../../../addons/ofxPd/src/ofxPd.h</file>
+				<file>../../../addons/ofxPd/src/ofxPd.cpp</file>
+			</folder>
+			<folder name="addons/ofxPd/libs/pd_src">
+				<file>../../../addons/ofxPd/libs/pd_src/d_arithmetic.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_array.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_ctl.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_dac.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_delay.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_fft.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_fft_mayer.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_fftroutine.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_fftsg_h.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_filter.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_global.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_math.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_misc.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_osc.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_resample.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_soundfile.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_soundout.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/d_ugen.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_all_guis.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_all_guis.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_array.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_bang.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_canvas.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_canvas.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_editor.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_graph.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_guiconnect.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_hdial.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_hslider.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_io.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_mycanvas.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_numbox.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_readwrite.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_rtext.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_scalar.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_template.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_text.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_toggle.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_traversal.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_vdial.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_vslider.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/g_vumeter.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/LICENSE.txt</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_atom.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_binbuf.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_class.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_conf.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_glob.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_imp.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_memory.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_obj.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_pd.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_pd.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/m_sched.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/notes.txt</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_inter.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_loader.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_main.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_main.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_path.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_print.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/s_stuff.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/t_tk.h</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_acoustics.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_arithmetic.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_connective.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_gui.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_interface.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_list.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_midi.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_misc.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_net.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_qlist.c</file>
+				<file>../../../addons/ofxPd/libs/pd_src/x_time.c</file>
+			</folder>
+			<folder name="addons/ofxPd/libs/mrpeach">
+				<file>../../../addons/ofxPd/libs/mrpeach</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/LICENSE</file>
+			</folder>
+			<folder name="addons/ofxPd/libs/mrpeach/net">
+				<file>../../../addons/ofxPd/libs/mrpeach/net/tcpclient.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/net/tcpreceive.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/net/tcpsend.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/net/tcpserver.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/net/udpreceive.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/net/udpsend.c</file>
+			</folder>
+			<folder name="addons/ofxPd/libs/mrpeach/osc">
+				<file>../../../addons/ofxPd/libs/mrpeach/osc/packOSC.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/osc/pipelist.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/osc/routeOSC.c</file>
+				<file>../../../addons/ofxPd/libs/mrpeach/osc/unpackOSC.c</file>
+			</folder>
+		</src>
+
+		<include>
+			<path>../../../addons/ofxPd/libs/pd_src</path>
+			<path>../../../addons/ofxPd/libs/mrpeach/net</path>
+			<path>../../../addons/ofxPd/libs/mrpeach/osc</path>
+		</include>
+		
+
+		<link>
+		</link>
+		
+	</add>
+	
+	
+</install>
+
