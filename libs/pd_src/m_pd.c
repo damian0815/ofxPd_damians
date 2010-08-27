@@ -309,10 +309,6 @@ void pd_init(void)
 void extras_init(void)
 {
     // mrpeach 'net' files
-    tcpclient_setup();
-    tcpreceive_setup();
-    tcpsend_setup();
-    tcpserver_setup();
     udpreceive_setup();
     udpsend_setup();
     
