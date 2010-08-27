@@ -23,10 +23,12 @@ class testApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 
-		void audioRequested 	(float * input, int bufferSize, int nChannels);
+		void audioRequested 	(float * output, int bufferSize, int nChannels);
+		void audioReceived		(float * input, int bufferSize, int nChannels );
+	
+	
+		float * audioInputData;
 
-	
-	
 		// Pd object
 		ofxPd pd;
 	
