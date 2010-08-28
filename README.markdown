@@ -10,6 +10,9 @@ Released under a BSD-style license, see LICENSE for details.
 Changelog:
 ---------
 
+v0.03 
+Internal messaging: no more need for OSC communication
+
 v0.02
 Includes Zach Lieberman's input enhancements, converted license to BSD-style
 

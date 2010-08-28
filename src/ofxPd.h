@@ -1,6 +1,6 @@
 /*
  
- ofxPd v0.02 
+ ofxPd v0.03 
  Copyright 2010 by Damian Stewart, Zach Liebermann.
  
  this code uses code from pdlib "AudioOutput.h", so pdlib license is included here: 
