@@ -81,8 +81,6 @@ void ofxPd::start()
 	// sleep until pd engine has fully started
 	while ( !sys_hasstarted )
 		ofSleepMillis( 500 );
-	// turn on dsp
-	startDSP();
 	
 }
 

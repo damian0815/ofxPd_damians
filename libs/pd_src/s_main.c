@@ -329,17 +329,12 @@ int sys_main(const char *libdir,
     pd_makeversion();
     if (sys_startgui(libdir))       /* start the gui */
         return(1);
-
-/*    // bryansum: initialize coreaudio stuff
-    int status;
-    if ((status = AudioOutputInitialize(&sys_callbackparams))) {
-        return status;
-    }*/
     
     // bryansum
     // Run the either m_pollingscheduler, which actually computes ticks,
     // or m_callbackscheduler, which waits for the hardware to callback for DSP ticks.
-    // CoreAudio on the iPhone uses the callback mechanism. 
+	//
+	// we will be using the callback mechanism
     sched_set_using_audio(SCHED_AUDIO_CALLBACK);
     
     sys_hasstarted = 1;
