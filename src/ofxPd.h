@@ -59,10 +59,21 @@ public:
 	/// add the given path to the search path
 	void addSearchPath( string search_path );
 	
-	/// start pd
+	/// start pd core; DSP (sound processing) is started separately
 	void start();
-	/// stop pd
+	/// stop pd core
 	void stop();
+	
+	/// start DSP (sends 'pd dsp 1' message)
+	void startDSP() { sendRawMessage("; pd dsp 1" ); }
+	/// stop DSP (sends 'pd dsp 0' message)
+	void stopDSP() { sendRawMessage("; pd dsp 0" ); }
+	
+	/// send a message to the pd engine
+	void sendRawMessage( const string& message );
+	/// send the given float to the given receive target in pd
+	void sendFloat( const string& receive_target, float number );
+	
 	
 	/// callback for audio rendering (output only)
 	void renderAudio( float* output, int bufferSize, int nChannels );

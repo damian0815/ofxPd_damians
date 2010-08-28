@@ -36,7 +36,7 @@ void testApp::setup(){
 	pd.setup( "", NUM_OUT_CHANNELS, NUM_IN_CHANNELS, BITRATE, PD_BLOCK_SIZE );
 	// on startup, open data/two_osc.pd
 	pd.addOpenFile( "two_osc.pd" );
-	// start pd
+	// start pd core
 	pd.start();
 
 	// create storage space to for incoming audio
@@ -45,7 +45,8 @@ void testApp::setup(){
 	// now that Pd is ready we can set up the sound hardware
 	ofSoundStreamSetup( NUM_OUT_CHANNELS, NUM_IN_CHANNELS, this, BITRATE, BUFFER_SIZE, NUM_BUFFERS );
 
-
+	// start pd dsp
+	pd.startDSP();
 }
 
 
@@ -71,20 +72,16 @@ void testApp::keyPressed  (int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased  (int key){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
 	// send mouse messages to Pd
-	ofxOscMessage m;
-	m.setAddress("/mouse/x" );
-	m.addIntArg( x );
-	osc_sender.sendMessage( m );
-	m.clear();
-	m.setAddress( "/mouse/y" );
-	m.addIntArg( y );
-	osc_sender.sendMessage( m );
+	pd.sendFloat( "osc_l_frequency", x );
+	pd.sendFloat( "osc_r_frequency", y );
+	pd.sendFloat( "delay_time_l", x );
+	pd.sendFloat( "delay_time_r", y );
 	
 }
 

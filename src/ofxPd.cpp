@@ -78,6 +78,12 @@ void ofxPd::addSearchPath( string path )
 void ofxPd::start()
 {
 	this->startThread();
+	// sleep until pd engine has fully started
+	while ( !sys_hasstarted )
+		ofSleepMillis( 500 );
+	// turn on dsp
+	startDSP();
+	
 }
 
 
@@ -213,3 +219,23 @@ void ofxPd::renderAudio( float * input, float* output, int bufferSize, int nChan
         memset(sys_soundout, 0, sizeof(t_sample)*sys_noutchannels*sys_schedblocksize);        
     }
 }
+
+
+void ofxPd::sendFloat( const string& receive_target, float the_float )
+{
+	sendRawMessage( ";"+receive_target+" "+ofToString(the_float) );
+}
+
+void ofxPd::sendRawMessage( const string& message )
+{
+	// senda  message to pd
+	t_binbuf *b = binbuf_new();
+	static char msg_buf[MAXPDSTRING+1];
+	strncpy( msg_buf, message.c_str(), message.size() );
+	binbuf_text(b, msg_buf, message.size() );
+	sys_lock();
+	binbuf_eval(b, 0, 0, 0);
+	sys_unlock();
+	binbuf_free(b);
+}
+
