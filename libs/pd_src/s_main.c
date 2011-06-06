@@ -318,7 +318,7 @@ int sys_main(const char *libdir,
     sys_externlist = namelist_append_files(sys_externlist, externs); // open externs at start up
     sys_printtostderr = sys_nogui = 1;
 	
-	sys_verbose = 1;
+	sys_verbose = 0;
     
     if (!sys_defaultfont)
         sys_defaultfont = DEFAULTFONT;

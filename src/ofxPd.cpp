@@ -59,6 +59,7 @@ void ofxPd::setup( string _lib_dir, int _in_chans, int _out_chans, int _bitrate,
 	in_chans = _in_chans;
 	bitrate = _bitrate;
 	block_size = _block_size;
+	has_quit = false;
 }
 
 
@@ -81,7 +82,6 @@ void ofxPd::start()
 	// sleep until pd engine has fully started
 	while ( !sys_hasstarted )
 		ofSleepMillis( 500 );
-	
 }
 
 
@@ -89,11 +89,19 @@ void ofxPd::stop()
 {
 	if ( this->isThreadRunning() )
 		sys_exit();
+	
+	printf("stopping ofxPd, waiting for quit...\n");
+	while ( !has_quit )
+		usleep( 1000 );
+	printf("quit\n");
+	
 }
 
 
 void ofxPd::threadedFunction()
 {
+	
+	has_quit = false;
 	
 	// concatenate string vectors to single strings
 	string externs_cat, open_files_cat, search_path_cat;
@@ -121,6 +129,9 @@ void ofxPd::threadedFunction()
 	int n_in_channels = in_chans;
 	sys_main( lib_dir.c_str(), externs_cat.c_str(), open_files_cat.c_str(), search_path_cat.c_str(),
 			 sound_rate, block_size, n_out_channels, n_in_channels );
+	
+	// on quit, set flag
+	has_quit = true;
 
 }
 

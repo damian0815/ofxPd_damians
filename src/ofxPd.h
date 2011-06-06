@@ -95,6 +95,7 @@ private:
 	int in_chans;
 	int bitrate;
 	int block_size;
+	bool has_quit;
 	
 	
 };
